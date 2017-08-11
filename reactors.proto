@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package reactor_system;
+
+message Reactor {
+	int32 id = 1;
+	int32 type = 2;
+	float xcoord = 3;
+	float ycoord = 4;
+}
+
+message ReactorPair {
+	int32 r1 = 1;
+	int32 r2 = 2;
+}
+
+message ReactorSystem {
+	int64 time = 1; //timestamp
+	repeated Reactor reactor = 2;
+	repeated ReactorPair pair = 3;
+}
