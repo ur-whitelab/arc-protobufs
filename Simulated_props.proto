@@ -1,24 +1,21 @@
 syntax = "proto3";
 
-package reactor_system;
+package Reactor_kinetics;
 
-message Reactor_Kinetics {
+message ReactorKinetics {
     
-	message mol_fracs{
-		float x1 = 1;
-		float x2 = 2;
-		float x3 = 3;
+	message mol_fractions{
+		repeated float x = 1;
 	}
 
 	message other_properties{
-		float temp = 1;
-		float pressure = 2;
+		float temperature = 2;
+		float pressure = 3;
 	}
     
 }
 
-
-message ReactorSystem {
+message SystemKinetics {
     int64 time = 1; //timestamp
-    repeated Reactor_Kinetics reactor = 2;	//repeats for as many reactors and pipes as you have
+    repeated ReactorKinetics;	//repeats for as many reactors and pipes as you have
 }
