@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package Reactor_kinetics;
+package reactors;
 
 message ReactorKinetics {
-    
+
 	message mol_fractions{
 		repeated float x = 1;
 	}
@@ -12,7 +12,7 @@ message ReactorKinetics {
 		float temperature = 2;
 		float pressure = 3;
 	}
-    
+
 }
 
 message SystemKinetics {

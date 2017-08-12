@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package reactor_system;
+package reactors;
 
 message Reactor {
 	int32 id = 1;
