@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package reactors;
+
+message Checkerboard {
+	float TopLeftx = 1;
+	float TopLefty = 2;	
+	float TopRightx = 3;
+	float TopRighty = 4;	
+	float BottomLeftx = 5;
+	float BottomLefty = 6;	
+	float BottomRightx = 7;
+	float BottomRighty = 8;	
+}
