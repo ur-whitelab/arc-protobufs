@@ -4,7 +4,7 @@ syntax = "proto3";
 package ReactorKinetics;
 message SystemKinetics{
     
-    message reactorkinetics {
+    message reactor_kinetics {
         repeated float mole_fraction = 1;
         float temperature = 2;
         float pressure = 3;
