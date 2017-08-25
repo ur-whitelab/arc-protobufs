@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Reactors {
+namespace Rochester.Physics.Communication {
 
   /// <summary>Holder for reflection information generated from kinetics.proto</summary>
   public static partial class KineticsReflection {
@@ -26,12 +26,13 @@ namespace Reactors {
             "EhUKDW1vbGVfZnJhY3Rpb24YASADKAISEwoLdGVtcGVyYXR1cmUYAiABKAIS",
             "EAoIcHJlc3N1cmUYAyABKAIiSwoOU3lzdGVtS2luZXRpY3MSDAoEdGltZRgB",
             "IAEoAxIrCghraW5ldGljcxgCIAMoCzIZLnJlYWN0b3JzLlJlYWN0b3JLaW5l",
-            "dGljc2IGcHJvdG8z"));
+            "dGljc0IiqgIfUm9jaGVzdGVyLlBoeXNpY3MuQ29tbXVuaWNhdGlvbmIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Reactors.ReactorKinetics), global::Reactors.ReactorKinetics.Parser, new[]{ "MoleFraction", "Temperature", "Pressure" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Reactors.SystemKinetics), global::Reactors.SystemKinetics.Parser, new[]{ "Time", "Kinetics" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.ReactorKinetics), global::Rochester.Physics.Communication.ReactorKinetics.Parser, new[]{ "MoleFraction", "Temperature", "Pressure" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.SystemKinetics), global::Rochester.Physics.Communication.SystemKinetics.Parser, new[]{ "Time", "Kinetics" }, null, null, null)
           }));
     }
     #endregion
@@ -45,7 +46,7 @@ namespace Reactors {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Reactors.KineticsReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Rochester.Physics.Communication.KineticsReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -211,7 +212,7 @@ namespace Reactors {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Reactors.KineticsReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Rochester.Physics.Communication.KineticsReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -241,7 +242,7 @@ namespace Reactors {
     public const int TimeFieldNumber = 1;
     private long time_;
     /// <summary>
-    /// timestamp
+    ///timestamp
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public long Time {
@@ -253,14 +254,14 @@ namespace Reactors {
 
     /// <summary>Field number for the "kinetics" field.</summary>
     public const int KineticsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Reactors.ReactorKinetics> _repeated_kinetics_codec
-        = pb::FieldCodec.ForMessage(18, global::Reactors.ReactorKinetics.Parser);
-    private readonly pbc::RepeatedField<global::Reactors.ReactorKinetics> kinetics_ = new pbc::RepeatedField<global::Reactors.ReactorKinetics>();
+    private static readonly pb::FieldCodec<global::Rochester.Physics.Communication.ReactorKinetics> _repeated_kinetics_codec
+        = pb::FieldCodec.ForMessage(18, global::Rochester.Physics.Communication.ReactorKinetics.Parser);
+    private readonly pbc::RepeatedField<global::Rochester.Physics.Communication.ReactorKinetics> kinetics_ = new pbc::RepeatedField<global::Rochester.Physics.Communication.ReactorKinetics>();
     /// <summary>
-    /// repeats for all components(reactors and pipes) in the system
+    ///repeats for all components(reactors and pipes) in the system
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Reactors.ReactorKinetics> Kinetics {
+    public pbc::RepeatedField<global::Rochester.Physics.Communication.ReactorKinetics> Kinetics {
       get { return kinetics_; }
     }
 

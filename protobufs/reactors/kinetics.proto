@@ -2,6 +2,7 @@
 syntax = "proto3";
 
 package reactors;
+option csharp_namespace = "Rochester.Physics.Communication";
 
 message ReactorKinetics {
     repeated float mole_fraction = 1;
