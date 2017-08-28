@@ -4,9 +4,10 @@ option csharp_namespace = "Rochester.Physics.Communication";
 
 message Node {
 	int32 id = 1;
-	int32 type = 2;
-	repeated float position = 3; //for unity rendering
-	repeated float weight = 4;
+	string label = 2;
+	bool delete = 3;
+	repeated float position = 4; //for unity rendering
+	repeated float weight = 5;
 }
 
 message Edge {
@@ -19,6 +20,6 @@ message Edge {
 
 message Graph {
 	int64 time = 1; //timestamp for simulations
-	repeated Node nodes = 2;
-	repeated Edge edges = 3;
+	map<int32, Node> nodes = 2;
+	map<int32, Edge> edges = 3;
 }
