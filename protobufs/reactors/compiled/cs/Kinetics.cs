@@ -23,15 +23,15 @@ namespace Rochester.Physics.Communication {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5raW5ldGljcy5wcm90bxIIcmVhY3RvcnMiTwoPUmVhY3RvcktpbmV0aWNz",
-            "EhUKDW1vbGVfZnJhY3Rpb24YASADKAISEwoLdGVtcGVyYXR1cmUYAiABKAIS",
-            "EAoIcHJlc3N1cmUYAyABKAIiSwoOU3lzdGVtS2luZXRpY3MSDAoEdGltZRgB",
+            "EhMKC3RlbXBlcmF0dXJlGAEgASgCEhAKCHByZXNzdXJlGAIgASgCEhUKDW1v",
+            "bGVfZnJhY3Rpb24YAyADKAIiSwoOU3lzdGVtS2luZXRpY3MSDAoEdGltZRgB",
             "IAEoAxIrCghraW5ldGljcxgCIAMoCzIZLnJlYWN0b3JzLlJlYWN0b3JLaW5l",
             "dGljc0IiqgIfUm9jaGVzdGVyLlBoeXNpY3MuQ29tbXVuaWNhdGlvbmIGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.ReactorKinetics), global::Rochester.Physics.Communication.ReactorKinetics.Parser, new[]{ "MoleFraction", "Temperature", "Pressure" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.ReactorKinetics), global::Rochester.Physics.Communication.ReactorKinetics.Parser, new[]{ "Temperature", "Pressure", "MoleFraction" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.SystemKinetics), global::Rochester.Physics.Communication.SystemKinetics.Parser, new[]{ "Time", "Kinetics" }, null, null, null)
           }));
     }
@@ -63,9 +63,9 @@ namespace Rochester.Physics.Communication {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ReactorKinetics(ReactorKinetics other) : this() {
-      moleFraction_ = other.moleFraction_.Clone();
       temperature_ = other.temperature_;
       pressure_ = other.pressure_;
+      moleFraction_ = other.moleFraction_.Clone();
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -73,18 +73,8 @@ namespace Rochester.Physics.Communication {
       return new ReactorKinetics(this);
     }
 
-    /// <summary>Field number for the "mole_fraction" field.</summary>
-    public const int MoleFractionFieldNumber = 1;
-    private static readonly pb::FieldCodec<float> _repeated_moleFraction_codec
-        = pb::FieldCodec.ForFloat(10);
-    private readonly pbc::RepeatedField<float> moleFraction_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> MoleFraction {
-      get { return moleFraction_; }
-    }
-
     /// <summary>Field number for the "temperature" field.</summary>
-    public const int TemperatureFieldNumber = 2;
+    public const int TemperatureFieldNumber = 1;
     private float temperature_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Temperature {
@@ -95,7 +85,7 @@ namespace Rochester.Physics.Communication {
     }
 
     /// <summary>Field number for the "pressure" field.</summary>
-    public const int PressureFieldNumber = 3;
+    public const int PressureFieldNumber = 2;
     private float pressure_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Pressure {
@@ -103,6 +93,16 @@ namespace Rochester.Physics.Communication {
       set {
         pressure_ = value;
       }
+    }
+
+    /// <summary>Field number for the "mole_fraction" field.</summary>
+    public const int MoleFractionFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_moleFraction_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> moleFraction_ = new pbc::RepeatedField<float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> MoleFraction {
+      get { return moleFraction_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -118,18 +118,18 @@ namespace Rochester.Physics.Communication {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!moleFraction_.Equals(other.moleFraction_)) return false;
       if (Temperature != other.Temperature) return false;
       if (Pressure != other.Pressure) return false;
+      if(!moleFraction_.Equals(other.moleFraction_)) return false;
       return true;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= moleFraction_.GetHashCode();
       if (Temperature != 0F) hash ^= Temperature.GetHashCode();
       if (Pressure != 0F) hash ^= Pressure.GetHashCode();
+      hash ^= moleFraction_.GetHashCode();
       return hash;
     }
 
@@ -140,27 +140,27 @@ namespace Rochester.Physics.Communication {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      moleFraction_.WriteTo(output, _repeated_moleFraction_codec);
       if (Temperature != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(13);
         output.WriteFloat(Temperature);
       }
       if (Pressure != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(21);
         output.WriteFloat(Pressure);
       }
+      moleFraction_.WriteTo(output, _repeated_moleFraction_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += moleFraction_.CalculateSize(_repeated_moleFraction_codec);
       if (Temperature != 0F) {
         size += 1 + 4;
       }
       if (Pressure != 0F) {
         size += 1 + 4;
       }
+      size += moleFraction_.CalculateSize(_repeated_moleFraction_codec);
       return size;
     }
 
@@ -169,13 +169,13 @@ namespace Rochester.Physics.Communication {
       if (other == null) {
         return;
       }
-      moleFraction_.Add(other.moleFraction_);
       if (other.Temperature != 0F) {
         Temperature = other.Temperature;
       }
       if (other.Pressure != 0F) {
         Pressure = other.Pressure;
       }
+      moleFraction_.Add(other.moleFraction_);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -186,17 +186,17 @@ namespace Rochester.Physics.Communication {
           default:
             input.SkipLastField();
             break;
-          case 10:
           case 13: {
-            moleFraction_.AddEntriesFrom(input, _repeated_moleFraction_codec);
-            break;
-          }
-          case 21: {
             Temperature = input.ReadFloat();
             break;
           }
-          case 29: {
+          case 21: {
             Pressure = input.ReadFloat();
+            break;
+          }
+          case 26:
+          case 29: {
+            moleFraction_.AddEntriesFrom(input, _repeated_moleFraction_codec);
             break;
           }
         }
