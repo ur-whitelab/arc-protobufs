@@ -22,19 +22,23 @@ namespace Rochester.Physics.Communication {
     static GraphReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtncmFwaC5wcm90bxIGZ3JhcGhzIkIKBE5vZGUSCgoCaWQYASABKAUSDAoE",
-            "dHlwZRgCIAEoBRIQCghwb3NpdGlvbhgDIAMoAhIOCgZ3ZWlnaHQYBCADKAIi",
-            "TgoERWRnZRILCgNpZEEYASABKAUSDQoFdHlwZUEYAiABKAUSCwoDaWRCGAMg",
-            "ASgFEg0KBXR5cGVCGAQgASgFEg4KBndlaWdodBgFIAMoAiJPCgVHcmFwaBIM",
-            "CgR0aW1lGAEgASgDEhsKBW5vZGVzGAIgAygLMgwuZ3JhcGhzLk5vZGUSGwoF",
-            "ZWRnZXMYAyADKAsyDC5ncmFwaHMuRWRnZUIiqgIfUm9jaGVzdGVyLlBoeXNp",
-            "Y3MuQ29tbXVuaWNhdGlvbmIGcHJvdG8z"));
+            "CgtncmFwaC5wcm90bxIGZ3JhcGhzIlMKBE5vZGUSCgoCaWQYASABKAUSDQoF",
+            "bGFiZWwYAiABKAkSDgoGZGVsZXRlGAMgASgIEhAKCHBvc2l0aW9uGAQgAygC",
+            "Eg4KBndlaWdodBgFIAMoAiJOCgRFZGdlEgsKA2lkQRgBIAEoBRINCgV0eXBl",
+            "QRgCIAEoBRILCgNpZEIYAyABKAUSDQoFdHlwZUIYBCABKAUSDgoGd2VpZ2h0",
+            "GAUgAygCIt8BCgVHcmFwaBIMCgR0aW1lGAEgASgDEicKBW5vZGVzGAIgAygL",
+            "MhguZ3JhcGhzLkdyYXBoLk5vZGVzRW50cnkSJwoFZWRnZXMYAyADKAsyGC5n",
+            "cmFwaHMuR3JhcGguRWRnZXNFbnRyeRo6CgpOb2Rlc0VudHJ5EgsKA2tleRgB",
+            "IAEoBRIbCgV2YWx1ZRgCIAEoCzIMLmdyYXBocy5Ob2RlOgI4ARo6CgpFZGdl",
+            "c0VudHJ5EgsKA2tleRgBIAEoBRIbCgV2YWx1ZRgCIAEoCzIMLmdyYXBocy5F",
+            "ZGdlOgI4AUIiqgIfUm9jaGVzdGVyLlBoeXNpY3MuQ29tbXVuaWNhdGlvbmIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.Node), global::Rochester.Physics.Communication.Node.Parser, new[]{ "Id", "Type", "Position", "Weight" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.Node), global::Rochester.Physics.Communication.Node.Parser, new[]{ "Id", "Label", "Delete", "Position", "Weight" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.Edge), global::Rochester.Physics.Communication.Edge.Parser, new[]{ "IdA", "TypeA", "IdB", "TypeB", "Weight" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.Graph), global::Rochester.Physics.Communication.Graph.Parser, new[]{ "Time", "Nodes", "Edges" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Rochester.Physics.Communication.Graph), global::Rochester.Physics.Communication.Graph.Parser, new[]{ "Time", "Nodes", "Edges" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, })
           }));
     }
     #endregion
@@ -66,7 +70,8 @@ namespace Rochester.Physics.Communication {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Node(Node other) : this() {
       id_ = other.id_;
-      type_ = other.type_;
+      label_ = other.label_;
+      delete_ = other.delete_;
       position_ = other.position_.Clone();
       weight_ = other.weight_.Clone();
     }
@@ -87,21 +92,32 @@ namespace Rochester.Physics.Communication {
       }
     }
 
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 2;
-    private int type_;
+    /// <summary>Field number for the "label" field.</summary>
+    public const int LabelFieldNumber = 2;
+    private string label_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Type {
-      get { return type_; }
+    public string Label {
+      get { return label_; }
       set {
-        type_ = value;
+        label_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "delete" field.</summary>
+    public const int DeleteFieldNumber = 3;
+    private bool delete_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Delete {
+      get { return delete_; }
+      set {
+        delete_ = value;
       }
     }
 
     /// <summary>Field number for the "position" field.</summary>
-    public const int PositionFieldNumber = 3;
+    public const int PositionFieldNumber = 4;
     private static readonly pb::FieldCodec<float> _repeated_position_codec
-        = pb::FieldCodec.ForFloat(26);
+        = pb::FieldCodec.ForFloat(34);
     private readonly pbc::RepeatedField<float> position_ = new pbc::RepeatedField<float>();
     /// <summary>
     ///for unity rendering
@@ -112,9 +128,9 @@ namespace Rochester.Physics.Communication {
     }
 
     /// <summary>Field number for the "weight" field.</summary>
-    public const int WeightFieldNumber = 4;
+    public const int WeightFieldNumber = 5;
     private static readonly pb::FieldCodec<float> _repeated_weight_codec
-        = pb::FieldCodec.ForFloat(34);
+        = pb::FieldCodec.ForFloat(42);
     private readonly pbc::RepeatedField<float> weight_ = new pbc::RepeatedField<float>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> Weight {
@@ -135,7 +151,8 @@ namespace Rochester.Physics.Communication {
         return true;
       }
       if (Id != other.Id) return false;
-      if (Type != other.Type) return false;
+      if (Label != other.Label) return false;
+      if (Delete != other.Delete) return false;
       if(!position_.Equals(other.position_)) return false;
       if(!weight_.Equals(other.weight_)) return false;
       return true;
@@ -145,7 +162,8 @@ namespace Rochester.Physics.Communication {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Label.Length != 0) hash ^= Label.GetHashCode();
+      if (Delete != false) hash ^= Delete.GetHashCode();
       hash ^= position_.GetHashCode();
       hash ^= weight_.GetHashCode();
       return hash;
@@ -162,9 +180,13 @@ namespace Rochester.Physics.Communication {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      if (Type != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Type);
+      if (Label.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Label);
+      }
+      if (Delete != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(Delete);
       }
       position_.WriteTo(output, _repeated_position_codec);
       weight_.WriteTo(output, _repeated_weight_codec);
@@ -176,8 +198,11 @@ namespace Rochester.Physics.Communication {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (Type != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Type);
+      if (Label.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Label);
+      }
+      if (Delete != false) {
+        size += 1 + 1;
       }
       size += position_.CalculateSize(_repeated_position_codec);
       size += weight_.CalculateSize(_repeated_weight_codec);
@@ -192,8 +217,11 @@ namespace Rochester.Physics.Communication {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Type != 0) {
-        Type = other.Type;
+      if (other.Label.Length != 0) {
+        Label = other.Label;
+      }
+      if (other.Delete != false) {
+        Delete = other.Delete;
       }
       position_.Add(other.position_);
       weight_.Add(other.weight_);
@@ -211,17 +239,21 @@ namespace Rochester.Physics.Communication {
             Id = input.ReadInt32();
             break;
           }
-          case 16: {
-            Type = input.ReadInt32();
+          case 18: {
+            Label = input.ReadString();
             break;
           }
-          case 26:
-          case 29: {
-            position_.AddEntriesFrom(input, _repeated_position_codec);
+          case 24: {
+            Delete = input.ReadBool();
             break;
           }
           case 34:
           case 37: {
+            position_.AddEntriesFrom(input, _repeated_position_codec);
+            break;
+          }
+          case 42:
+          case 45: {
             weight_.AddEntriesFrom(input, _repeated_weight_codec);
             break;
           }
@@ -515,21 +547,21 @@ namespace Rochester.Physics.Communication {
 
     /// <summary>Field number for the "nodes" field.</summary>
     public const int NodesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Rochester.Physics.Communication.Node> _repeated_nodes_codec
-        = pb::FieldCodec.ForMessage(18, global::Rochester.Physics.Communication.Node.Parser);
-    private readonly pbc::RepeatedField<global::Rochester.Physics.Communication.Node> nodes_ = new pbc::RepeatedField<global::Rochester.Physics.Communication.Node>();
+    private static readonly pbc::MapField<int, global::Rochester.Physics.Communication.Node>.Codec _map_nodes_codec
+        = new pbc::MapField<int, global::Rochester.Physics.Communication.Node>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Rochester.Physics.Communication.Node.Parser), 18);
+    private readonly pbc::MapField<int, global::Rochester.Physics.Communication.Node> nodes_ = new pbc::MapField<int, global::Rochester.Physics.Communication.Node>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Rochester.Physics.Communication.Node> Nodes {
+    public pbc::MapField<int, global::Rochester.Physics.Communication.Node> Nodes {
       get { return nodes_; }
     }
 
     /// <summary>Field number for the "edges" field.</summary>
     public const int EdgesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Rochester.Physics.Communication.Edge> _repeated_edges_codec
-        = pb::FieldCodec.ForMessage(26, global::Rochester.Physics.Communication.Edge.Parser);
-    private readonly pbc::RepeatedField<global::Rochester.Physics.Communication.Edge> edges_ = new pbc::RepeatedField<global::Rochester.Physics.Communication.Edge>();
+    private static readonly pbc::MapField<int, global::Rochester.Physics.Communication.Edge>.Codec _map_edges_codec
+        = new pbc::MapField<int, global::Rochester.Physics.Communication.Edge>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForMessage(18, global::Rochester.Physics.Communication.Edge.Parser), 26);
+    private readonly pbc::MapField<int, global::Rochester.Physics.Communication.Edge> edges_ = new pbc::MapField<int, global::Rochester.Physics.Communication.Edge>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Rochester.Physics.Communication.Edge> Edges {
+    public pbc::MapField<int, global::Rochester.Physics.Communication.Edge> Edges {
       get { return edges_; }
     }
 
@@ -547,8 +579,8 @@ namespace Rochester.Physics.Communication {
         return true;
       }
       if (Time != other.Time) return false;
-      if(!nodes_.Equals(other.nodes_)) return false;
-      if(!edges_.Equals(other.edges_)) return false;
+      if (!Nodes.Equals(other.Nodes)) return false;
+      if (!Edges.Equals(other.Edges)) return false;
       return true;
     }
 
@@ -556,8 +588,8 @@ namespace Rochester.Physics.Communication {
     public override int GetHashCode() {
       int hash = 1;
       if (Time != 0L) hash ^= Time.GetHashCode();
-      hash ^= nodes_.GetHashCode();
-      hash ^= edges_.GetHashCode();
+      hash ^= Nodes.GetHashCode();
+      hash ^= Edges.GetHashCode();
       return hash;
     }
 
@@ -572,8 +604,8 @@ namespace Rochester.Physics.Communication {
         output.WriteRawTag(8);
         output.WriteInt64(Time);
       }
-      nodes_.WriteTo(output, _repeated_nodes_codec);
-      edges_.WriteTo(output, _repeated_edges_codec);
+      nodes_.WriteTo(output, _map_nodes_codec);
+      edges_.WriteTo(output, _map_edges_codec);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -582,8 +614,8 @@ namespace Rochester.Physics.Communication {
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
-      size += nodes_.CalculateSize(_repeated_nodes_codec);
-      size += edges_.CalculateSize(_repeated_edges_codec);
+      size += nodes_.CalculateSize(_map_nodes_codec);
+      size += edges_.CalculateSize(_map_edges_codec);
       return size;
     }
 
@@ -612,11 +644,11 @@ namespace Rochester.Physics.Communication {
             break;
           }
           case 18: {
-            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
+            nodes_.AddEntriesFrom(input, _map_nodes_codec);
             break;
           }
           case 26: {
-            edges_.AddEntriesFrom(input, _repeated_edges_codec);
+            edges_.AddEntriesFrom(input, _map_edges_codec);
             break;
           }
         }
