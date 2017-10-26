@@ -12,9 +12,9 @@ message Node {
 
 message Edge {
 	int32 idA = 1; //designate node pairs by their Node.id and Node.type values.
-	int32 typeA = 2;//need both for Unity dict, otherwise can't connect different node types
+	string labelA = 2;//need both for Unity dict, otherwise can't connect different node types
 	int32 idB = 3; //for digraphs, always point from A to B
-	int32 typeB = 4;
+	string labelB = 4;
 	repeated float weight = 5;//as many weights as you like
 }
 
