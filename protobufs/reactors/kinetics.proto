@@ -8,7 +8,7 @@ message ReactorKinetics {
     float temperature = 1;
     float pressure = 2;
     string label = 3;
-    int id = 4;
+    int32 id = 4;
     repeated float mole_fraction = 5;
 }
 
