@@ -10,6 +10,8 @@ message ReactorKinetics {
     string label = 3;
     int32 id = 4;
     repeated float mole_fraction = 5;
+    repeated string chemical_species = 6;
+    repeated float molar_flow_rate = 7;
 }
 
 message SystemKinetics{
