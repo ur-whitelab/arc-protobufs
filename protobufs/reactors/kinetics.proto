@@ -10,11 +10,11 @@ message ReactorKinetics {
     string label = 3;
     int32 id = 4;
     repeated float mole_fraction = 5;
-    repeated string chemical_species = 6;
-    repeated float molar_flow_rate = 7;
+    repeated float molar_flow_rate = 6;
 }
 
 message SystemKinetics{
     int64 time = 1; //timestamp
-    repeated ReactorKinetics kinetics = 2;  //repeats for all components(reactors and pipes) in the system
+    repeated string chemical_species = 2;
+    repeated ReactorKinetics kinetics = 3;  //repeats for all components(reactors and pipes) in the system
 }
